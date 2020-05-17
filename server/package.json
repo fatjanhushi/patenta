@@ -1,0 +1,15 @@
+{
+  "name": "patenta",
+  "version": "1.0.0",
+  "description": "Serveri i pyetjeve per testin e patentes",
+  "main": "index.js",
+  "scripts": {
+    "dev_server": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
