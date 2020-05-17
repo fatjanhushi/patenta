@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - './client_react'
+      - './client_react/*'
 
 jobs:
   # This job will:
