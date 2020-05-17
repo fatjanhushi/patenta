@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - master
-      paths:
-        'client_react/**'
+    paths: 'client_react/**'
 
 jobs:
   # This job will:
