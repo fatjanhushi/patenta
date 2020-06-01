@@ -14,17 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # ... your other build steps to produce a build directory
-      # e.g. `yarn build` for create-react-app
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install Packages
-        run: npm install --prefix server
-
       - name: Deploy Code
         uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
         with:
