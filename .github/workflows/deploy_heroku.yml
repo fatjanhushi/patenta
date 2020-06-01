@@ -25,9 +25,6 @@ jobs:
       - name: Install Packages
         run: npm install --prefix server
 
-      - name: Build page
-        run: npm run server
-
       - name: Deploy Code
         uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
         with:
