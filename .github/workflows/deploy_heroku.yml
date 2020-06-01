@@ -1,0 +1,37 @@
+name: deploy_backend
+
+on:
+  push:
+    branches:
+      - master
+    paths: 'server/**'
+
+jobs:
+  publishMasterCommit:
+    name: Deploy to Heroku
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # ... your other build steps to produce a build directory
+      # e.g. `yarn build` for create-react-app
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Packages
+        run: npm install --prefix server
+
+      - name: Build page
+        run: npm run server
+
+      - name: Deploy Code
+        uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'patenta' #Must be unique in Heroku
+          heroku_email: 'fatjan.al@gmail.com'
+          appdir: './server' #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
