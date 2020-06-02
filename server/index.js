@@ -1,11 +1,10 @@
-var express = require('express');
+const express = require('express');
+require('./services/passport');
 
-var app = express();
+const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Fatjoni gezuar ditelindjen 2020!!!!!!!!!!!!!');
-});
+require('./routes/mainRoutes')(app);
+require('./routes/authRoutes')(app);
 
-var server = app.listen(process.env.PORT || 5000, () =>
-  console.log('Listening on port ' + server.address().port)
-);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log('Listening on port ' + PORT));
