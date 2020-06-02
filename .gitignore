@@ -2,6 +2,7 @@
 
 # dependencies
 /server/node_modules
+/server/config/devKeys.js
 /client_react/node_modules
 /client_react/.pnp
 .pnp.js
