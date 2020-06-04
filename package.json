@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "npm start --prefix client_react",
-    "server": "npm run start --prefix server",
+    "server": "npm run dev_server --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client_prod": "npm run build --prefix client_react"
   },

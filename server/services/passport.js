@@ -13,13 +13,25 @@ passport.use(
       callbackURL: '/auth/google/callback',
       proxy: true,
     },
-    (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-      new User({
-        googleId: profile.id,
+    async (accessToken, refreshToken, profile) => {
+      let user = null;
+      const existinguser = await User.findOne({
         email: profile.emails[0].value,
-        fullName: profile.displayName,
-      }).save();
+      });
+
+      if (existinguser) {
+        //user exists
+        user = existinguser;
+      } else {
+        //user NOT exists - create new user
+        user = await new User({
+          googleId: profile.id,
+          email: profile.emails[0].value,
+          fullName: profile.displayName,
+        }).save();
+      }
+
+      console.log(user.email + ' ' + user.id);
     }
   )
 );

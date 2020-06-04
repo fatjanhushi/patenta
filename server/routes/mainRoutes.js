@@ -1,5 +1,5 @@
 module.exports = (app) => {
   app.get('/', (req, res) => {
-    res.send('Fatjoni edhe 100!!');
+    res.send('Fatjoni edhe 1000!!');
   });
 };
